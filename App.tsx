@@ -1,5 +1,17 @@
 
-=======
+import React from 'react';
+
+import {
+  Button,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  useColorScheme,
+  View,
+} from 'react-native';
+
 import Cabecera from './components/Cabecera';
 import ConciertosList from './components/ConciertosList';
 
@@ -59,7 +71,7 @@ import Registro from './screens/Registro';
 /*import ScreenC from './screens/ScreenC';
 import TituloLogo from './components/TituloLogo';
 import TabScreen from './screens/TabScreen';
-*/
+
 
 //Creamos el Native Stack
 const Stack = createNativeStackNavigator();
