@@ -3,8 +3,7 @@ import React from 'react'
 import TabCartel from './TabCartel';
 import TabInfo from './TabInfo';
 
-//import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-//import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 const Tab = createMaterialTopTabNavigator();
@@ -16,15 +15,17 @@ export default function Eventos() {
  
 
     <Tab.Navigator
+    
+
     screenOptions={{
       tabBarActiveTintColor: '#FFFFFF',
       tabBarInactiveTintColor: '#F8F8F8',
       tabBarStyle: {
-        backgroundColor: '#633689',
+        backgroundColor: 'red',
       },
-      tabBarLabelStyle: {
+        tabBarLabelStyle: {
         textAlign: 'center',
-        fontSize: 12
+        fontSize: 24
       },
       tabBarIndicatorStyle: {
         borderBottomColor: '#87B56A',
@@ -32,13 +33,13 @@ export default function Eventos() {
       },
     }}>
     <Tab.Screen
-      name="FirstPage"
+      name="Panel1"
       component={TabCartel}
       options={{
         tabBarLabel: 'CARTEL',
       }}  />
     <Tab.Screen
-      name="SecondPage"
+      name="Panel2"
       component={TabInfo}
       options={{
         tabBarLabel: '+INFO',
@@ -49,35 +50,5 @@ export default function Eventos() {
 
 
   
-
-   /*
-    <Tab.Navigator
-        initialRouteName="TabA"
-        activeColor="#e91e63"
-        barStyle={{ backgroundColor: 'powderblue' }}
-
-        >
-
-        <Tab.Screen name="TabA" 
-        component={TabA} 
-        options={{
-            tabBarLabel: 'TabA',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="home-alert" color={color} size={30} />
-            ),
-          }}
-        />
-        <Tab.Screen name="TabB"
-        component={TabB} 
-        options={{
-            tabBarLabel: 'TabB',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="label" color={color} size={26} />
-            ),
-          }}
-        />
-
-<Tab.Screen name="Home" component={TabB} />
-    </Tab.Navigator>*/
   )
 }

@@ -1,4 +1,4 @@
-
+/*
 import React from 'react';
 
 import {
@@ -45,12 +45,12 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
-export default App;
+export default App;*/
 
 
 
 
-{/*import React from 'react';
+import React from 'react';
 
 import {
   Button,
@@ -68,9 +68,7 @@ import ScreenA from './screens/Principal';
 import Principal from './screens/Principal';
 import Eventos from './screens/Eventos';
 import Registro from './screens/Registro';
-/*import ScreenC from './screens/ScreenC';
-import TituloLogo from './components/TituloLogo';
-import TabScreen from './screens/TabScreen';
+
 
 
 //Creamos el Native Stack
@@ -87,8 +85,7 @@ function App(): JSX.Element {
           initialRouteName="VentanaA"
           screenOptions={{
             headerStyle: {
-            //  backgroundColor: '#f4511e',
-              backgroundColor: 'green',
+            backgroundColor: 'black',
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -99,10 +96,10 @@ function App(): JSX.Element {
 
             <Stack.Screen name="VentanaA" component={Principal} 
             options={{
-              title: 'Ventana principal',
+              title: '',
               headerStyle: {
                // backgroundColor: '#f8f8ff',
-                  backgroundColor: 'yellow',
+                  backgroundColor: 'white',
               },
               headerTintColor: '#000',
           //    headerTitle: (props) => <TituloLogo titulo='Ventana principal'/>
@@ -120,5 +117,5 @@ function App(): JSX.Element {
 
 
 
-export default App; */}
+export default App; 
 

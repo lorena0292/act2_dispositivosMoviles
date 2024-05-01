@@ -4,7 +4,7 @@ import React from 'react'
 export default function TabInfo({navigation}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.fuente}>TabB</Text>
+      
       <Button 
     title="Consige aqui tus entradas"
     onPress={() => navigation.navigate('Registro')}
@@ -15,7 +15,7 @@ export default function TabInfo({navigation}) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#f0e68c',
+        backgroundColor: 'white',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
