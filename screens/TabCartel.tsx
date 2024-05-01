@@ -4,7 +4,7 @@ import React from 'react'
 export default function TabCartel({ navigation}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.fuente}>TabA</Text>
+     
       <Button 
     title="Consige aqui tus entradas"
     onPress={() => navigation.navigate('Registro')}
@@ -16,7 +16,7 @@ export default function TabCartel({ navigation}) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#ff1493',
+        backgroundColor: 'white',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
