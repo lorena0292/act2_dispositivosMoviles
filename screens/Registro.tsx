@@ -21,10 +21,35 @@ import {
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+//Esquemas de validación
+import * as Yup from 'yup'
+//Formik
+import {Formik} from 'formik'
 
+const schema = Yup.object().shape({
+  nombre:Yup.string()
+  .min(2,'Tienes que escribir tu nombre')
+  .max(30,'El nombre no puede ser tan largo')
+  .required('El nombre es obligatorio'),
+
+  email:Yup.string()
+  .min(2,'Tienes que escribir tu email')
+  .max(30,'El email no puede ser tan largo')
+  .required('El email es obligatorio')
+  ,
+  telef:Yup.number()
+  .min(9,'El teléfono tiene que tener minimo 9 cifras')
+  .required('El teléfono es obligatorio')
+
+})
 
 function Registro(): JSX.Element {
 
+  {/*INICIALIZACION VARIABLES */}
+
+  const[conciertoKiko,setConciertoKiko]=useState(false);
+  const[conciertoHungara,setConciertoHungara]=useState(false);
+  const[conciertoQueen,setConciertoQueen]=useState(false);
   const [nombre, setnombre] = useState("");
   const [email, setEmail] = useState("");
   const [telef, settelef] = useState("");
@@ -32,101 +57,187 @@ function Registro(): JSX.Element {
   const [agree, setAgree] = useState(false);
 
   const submit = () => {
-    if (!nombre && !email && !telef && !mensaje) {
-      Alert.alert("Porfa please rellena todos los campos");
-    } else {
-      Alert.alert(`Muchas gracias ${nombre}`);
-    }
+
+      Alert.alert(`Muchas gracias. Recibirás tus entradas en la dirección de correo proporcionada`);
+   
+    
   };
+
+
 
   return (
     <SafeAreaView>
       <ScrollView>
         <View style={styles.mainContainer}>
-          <Text style={styles.mainHeader}> Contacto React Native</Text>
+          <Text style={styles.mainHeader}>Entradas para conciertos</Text>
 
-          <Text style={styles.description}>
-            Este es otro ejemplo centrado en los formularios
-          </Text>
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.labels}> Introduce tu nombre </Text>
-            <TextInput
-              style={styles.inputStyle}
-              placeholder={"Nombre"}
-              value={nombre}
-              onChangeText={(userdata) => setnombre(userdata)}
-            />
-          </View>
+        
+        {/*COMIENZA EL FORMULARIO FORMIK */}
+          <Formik
+              initialValues={{nombre:'',email:'',telef:'',mensaje:'',conciertoHungara:'', conciertoKiko:'', conciertoQueen:'' }}
+              validationSchema={schema}
+              onSubmit={values =>{submit();}}
+          >
+            
+            {({values,handleChange,handleSubmit,errors,touched})=>
+            (
+              <>
+               {/*Inicio Conciertos*/} 
+                <Text style={styles.labels}>
+                  Selecciona los conciertos a los cuales quieres asistir:
+                </Text>
+             
+                <View style={styles.wrapper}>
+                  <BouncyCheckbox
+                    fillColor="red"
+                    unfillColor="#FFFFFF"
+                    iconStyle={{ borderColor: "blue" }}
+                    innerIconStyle={{ borderWidth: 2 }}
+                    textStyle={{ fontFamily: "JosefinSans-Regular" }}
+                    isChecked={conciertoKiko}
+                    onPress={()=>setConciertoKiko(!conciertoKiko)}
+                  />
+                  <Text style={styles.wrapperText}>
+                    Kiko Rivera - 04/08/24
+                  </Text>
+                </View>
+                <View style={styles.wrapper}>
+                  
+                <BouncyCheckbox
+                  fillColor="blue"
+                  unfillColor="#FFFFFF"
+                  iconStyle={{ borderColor: "blue" }}
+                  innerIconStyle={{ borderWidth: 2 }}
+                  textStyle={{ fontFamily: "JosefinSans-Regular" }}
+                  isChecked={conciertoHungara}
+                  onPress={()=>setConciertoHungara(!conciertoHungara)}
+                />
+                <Text style={styles.wrapperText}>
+                La Húngara - 05/08/24
+                </Text>
+                </View>
+                <View style={styles.wrapper}>
+                  <BouncyCheckbox
+                    fillColor="green"
+                    unfillColor="#FFFFFF"
+                    iconStyle={{ borderColor: "blue" }}
+                    innerIconStyle={{ borderWidth: 2 }}
+                    textStyle={{ fontFamily: "JosefinSans-Regular" }}
+                    isChecked={conciertoQueen}
+                    onPress={()=>setConciertoQueen(!conciertoQueen)}
+                  />
+                  <Text style={styles.wrapperText}>
+                    Tributo Queen - 10/08/24
+                  </Text>
+                </View>
+               {/*Fin Conciertos*/} 
+          
+              {/*Input Nombre*/} 
+              <View style={styles.inputContainer}>
+                          <Text style={styles.labels}> Introduce tu nombre </Text>
+                          {touched.nombre && errors.nombre && (
+                              <Text style={styles.errorText}>
+                                {errors.nombre}
+                              </Text>
+                          )}
+                          <TextInput
+                            style={styles.inputStyle}
+                            placeholder={"Nombre"}
+                            value={values.nombre}
+                            onChangeText={handleChange('nombre')
+                            
+                            }
+                          />
+                        </View>
+              {/*Fin Nombre*/} 
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.labels}> Introduce tu email </Text>
-            <TextInput
-              style={styles.inputStyle}
-              placeholder={"email@ejemplo.com"}
-              value={email}
-              onChangeText={(email) => setEmail(email)}
-            />
-          </View>
+              {/*Mail*/} 
+                        <View style={styles.inputContainer}>
+                          <Text style={styles.labels}> Introduce tu email </Text>
+                          {touched.email && errors.email && (
+                              <Text style={styles.errorText}>
+                                {errors.email}
+                              </Text>
+                          )}
+                          <TextInput
+                            style={styles.inputStyle}
+                            placeholder={"email@ejemplo.com"}
+                            value={values.email}
+                                          onChangeText={handleChange('email')}
+                          />
+                        </View>
+              {/*Fin mail*/} 
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.labels}> Introduce tu número de móvil </Text>
-            <TextInput
-              style={styles.inputStyle}
-              placeholder={"68766876"}
-              value={telef}
-              onChangeText={(telef) => settelef(telef)}
-            />
-          </View>
+              {/*Movil*/} 
+                        <View style={styles.inputContainer}>
+                          <Text style={styles.labels}> Introduce tu número de móvil </Text>
+                          {touched.telef && errors.telef && (
+                              <Text style={styles.errorText}>
+                                {errors.telef}
+                              </Text>
+                          )}
+                          <TextInput
+                            style={styles.inputStyle}
+                            placeholder={"68766876"}
+                            value={values.telef}
+                            onChangeText={handleChange('telef')}
+                          />
+                        </View>
+              {/*Fin Móvil*/} 
 
-          <View style={styles.inputContainer}>
-            <Text style={styles.labels}> ¿En qué te podemos ayudar? </Text>
-            <TextInput
-              style={[styles.inputStyle, styles.multilineStyle]}
-              placeholder={"Descríbenos el problema"}
-              value={mensaje}
-              onChangeText={(msg) => setmensaje(msg)}
-              numberOfLines={5}
-              multiline={true}
-            />
-          </View>
+              {/*Comentarios*/} 
+                        <View style={styles.inputContainer}>
+                          <Text style={styles.labels}> ¿Necesitas espacio para personas con movilidad reducida? Describe tus necesidades </Text>
+                          <TextInput
+                            style={[styles.inputStyle, styles.multilineStyle]}
+                            value={values.mensaje}
+                            onChangeText={handleChange('mensaje')}
+                            numberOfLines={5}
+                            multiline={true}
+                          />
+                        </View>
+              {/*Fin Comentarios*/} 
 
-          {/* checkbox  */}
+              {/*Aceptar Condiciones*/} 
+                        {/* checkbox  */}
 
-          <View style={styles.wrapper}>
-            {/** 
-            <Checkbox
-              value={agree}
-              onValueChange={() => setAgree(!agree)}
-              color={agree ? "#4630EB" : undefined}
-            />
-            */}
-            <BouncyCheckbox
-              fillColor="gray"
-              unfillColor="#FFFFFF"
-              iconStyle={{ borderColor: "blue" }}
-              innerIconStyle={{ borderWidth: 2 }}
-              textStyle={{ fontFamily: "JosefinSans-Regular" }}
-              onPress={(isChecked: boolean) => {setAgree(!agree)}}
-            />
-            <Text style={styles.wrapperText}>
-              He leído y estoy de acuerdo
-            </Text>
-          </View>
+                        <View style={styles.wrapper}>
+                        
+                          <BouncyCheckbox
+                            fillColor="gray"
+                            unfillColor="#FFFFFF"
+                            iconStyle={{ borderColor: "blue" }}
+                            innerIconStyle={{ borderWidth: 2 }}
+                            textStyle={{ fontFamily: "JosefinSans-Regular" }}
+                            onPress={(isChecked: boolean) => {setAgree(!agree)}}
+                          />
+                          <Text style={styles.wrapperText}>
+                            He leído y estoy de acuerdo
+                          </Text>
+                        </View>
+
+              {/*Fin Aceptar Condiciones*/}
 
           {/* submit button  */}
 
           <TouchableOpacity
-            style={[
-              styles.buttonStyle,
-              {
-                backgroundColor: agree ? "#4630EB" : "grey",
-              },
-            ]}
-            disabled={!agree}
-            onPress={submit}>
-            <Text style={styles.buttonText}> Contactanos </Text>
-          </TouchableOpacity>
+                  style={[
+                    styles.buttonStyle,
+                    {
+                      backgroundColor: agree ? "#4630EB" : "grey",
+                    },
+                  ]}
+                  disabled={!agree}
+                  onPress={handleSubmit}>
+                  <Text style={styles.buttonText}>Solicitar entradas </Text>
+                </TouchableOpacity>
+
+              </>
+
+            )         
+          }
+          </Formik>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -167,6 +278,10 @@ const styles = StyleSheet.create({
     paddingBottom: 5,
     fontFamily: "JosefinSans_300Light",
     lineHeight: 25,
+  },
+  errorText:{
+    color:'red',
+    fontFamily: "JosefinSans_300Light",
   },
   inputStyle: {
     borderWidth: 1,
