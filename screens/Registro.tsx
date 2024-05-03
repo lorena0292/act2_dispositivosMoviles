@@ -91,7 +91,7 @@ function Registro(): JSX.Element {
                 <View style={styles.wrapper}>
                   <BouncyCheckbox
                     fillColor="red"
-                    unfillColor="#FFFFFF"
+                    unFillColor="#FFFFFF"
                     iconStyle={{ borderColor: "blue" }}
                     innerIconStyle={{ borderWidth: 2 }}
                     textStyle={{ fontFamily: "JosefinSans-Regular" }}
@@ -106,7 +106,7 @@ function Registro(): JSX.Element {
                   
                 <BouncyCheckbox
                   fillColor="blue"
-                  unfillColor="#FFFFFF"
+                  unFillColor="#FFFFFF"
                   iconStyle={{ borderColor: "blue" }}
                   innerIconStyle={{ borderWidth: 2 }}
                   textStyle={{ fontFamily: "JosefinSans-Regular" }}
@@ -120,7 +120,7 @@ function Registro(): JSX.Element {
                 <View style={styles.wrapper}>
                   <BouncyCheckbox
                     fillColor="green"
-                    unfillColor="#FFFFFF"
+                    unFillColor="#FFFFFF"
                     iconStyle={{ borderColor: "blue" }}
                     innerIconStyle={{ borderWidth: 2 }}
                     textStyle={{ fontFamily: "JosefinSans-Regular" }}

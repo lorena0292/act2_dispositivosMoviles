@@ -10,10 +10,16 @@ import {
   Text,
   useColorScheme,
   View,
+  FlatList,
+  Pressable,
 } from 'react-native';
 
 import Cabecera from '../components/Cabecera';
 import ConciertosList from '../components/ConciertosList';
+//importamos datos
+import { DATOS_CONCIERTOS } from '../data/dataConciertos';
+
+import Concierto from '../components/Concierto';
 
 function Principal({ navigation}): React.JSX.Element{
 
@@ -22,22 +28,29 @@ function Principal({ navigation}): React.JSX.Element{
       <View>
       <Cabecera/>
       </View>
-    
-
-<TouchableOpacity
-        onPress={() => {
-          // Devolvemos la nota media actualizada
-          navigation.navigate({name: 'Eventos'});
-          }}
-        >
-                <Text style={styles.socialLinks}>CONCIERTOS</Text>
- </TouchableOpacity>
-
-
-
-      <ConciertosList/>
      
-    </SafeAreaView>  )
+     <Text style={styles.tituloTexto}>Conciertos 2024</Text>
+          <FlatList style={styles.container}
+            data={DATOS_CONCIERTOS}
+            keyExtractor={item=>item.id}
+            renderItem={({item})=>(
+            <Pressable
+            onPress={() => {
+         
+              navigation.navigate( 'Eventos',{item:item});
+              }}
+            >
+            <Concierto concierto={item}/>
+            </Pressable>
+           
+          )}
+          
+          
+          />
+        
+    </SafeAreaView>  
+  
+  )
 }
 
 const styles = StyleSheet.create({
@@ -67,6 +80,22 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  container:{
+    paddingHorizontal:16,
+    marginBottom:4,
+    margin:30,
+    height:200,
+    backgroundColor:"red",
+    padding: 20,
+    borderRadius: 10, 
+}, tituloTexto:{
+  fontSize: 24,
+  fontWeight: 'bold',
+  paddingHorizontal: 8,
+  marginTop:30,
+  marginLeft:30
+ 
+}
 });
 export default Principal;
 

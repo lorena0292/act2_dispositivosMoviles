@@ -1,15 +1,20 @@
-import { Button, View, Text, StyleSheet } from 'react-native'
+import { Button, View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 
-export default function TabCartel({ navigation}) {
+
+export default function TabCartel({route, navigation}) {
+ 
   return (
     <View style={styles.container}>
-     
+      <Image  style={styles.imagen}
+              source={route.params.item.imagenCartel} />
+                   
       <Button 
-    title="Consige aqui tus entradas"
-    onPress={() => navigation.navigate('Registro')}
-    />
+        title="Consige aqui tus entradas"
+        onPress={() => navigation.navigate('Registro')}
+        />
     </View>
+
     
   )
 }
@@ -34,6 +39,12 @@ const styles = StyleSheet.create({
       paddingVertical: 6,
       borderRadius: 6,
       marginTop:10
+  },
+  imagen:{
+     
+      width:400,
+      height:400
       
-  }
+  },
+
 })

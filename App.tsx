@@ -1,54 +1,3 @@
-/*
-import React from 'react';
-
-import {
-  Button,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
-
-import Cabecera from './components/Cabecera';
-import ConciertosList from './components/ConciertosList';
-
-function App (): React.JSX.Element{
-
-  return(
-    <SafeAreaView>
-      <View>
-      <Cabecera/>
-      </View>
-      <ConciertosList/>
-     
-    </SafeAreaView>  )
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
-export default App;*/
-
-
-
 
 import React from 'react';
 
@@ -64,15 +13,19 @@ import {
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ScreenA from './screens/Principal';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
 import Principal from './screens/Principal';
 import Eventos from './screens/Eventos';
 import Registro from './screens/Registro';
+import TabCartel from './screens/TabCartel';
 
 
 
 //Creamos el Native Stack
 const Stack = createNativeStackNavigator();
+//Creamos el Drawer
+const Drawer = createDrawerNavigator();
 
 
 function App(): JSX.Element {
@@ -81,6 +34,8 @@ function App(): JSX.Element {
 
    
      <NavigationContainer>
+      {/*CONTAINER DEL NAVIGATION*/}
+        
           <Stack.Navigator 
           initialRouteName="VentanaA"
           screenOptions={{
@@ -93,7 +48,7 @@ function App(): JSX.Element {
             },
           }}
           >
-
+            {/*STACK PRINCIPAL*/}
             <Stack.Screen name="VentanaA" component={Principal} 
             options={{
               title: '',
@@ -107,8 +62,11 @@ function App(): JSX.Element {
             />
 
           
-           <Stack.Screen name="Eventos" component={Eventos} />
+           <Stack.Screen name="Eventos" component={Eventos} 
+            />
            <Stack.Screen name="Registro" component={Registro} />
+          
+  
 
           </Stack.Navigator>
     </NavigationContainer>
