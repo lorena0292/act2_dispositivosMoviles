@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, Text, View, Image} from 'react-native'
+import { ScrollView, StyleSheet, Text, View, Image,TouchableOpacity, Pressable} from 'react-native'
 import React from 'react'
 import Concierto from './Concierto'
 
@@ -25,7 +25,7 @@ const datosConcierto =[
   
 ]
 
-export default function ConciertosList(): JSX.Element  {
+function ConciertosList(): JSX.Element  {
   return (
     <View>
         <Text style={styles.tituloTexto}>Conciertos</Text>
@@ -33,12 +33,20 @@ export default function ConciertosList(): JSX.Element  {
             style={styles.container}
             persistentScrollbar={true}
            
-        >   
+        > 
+        
+
             {datosConcierto.map( ({id,imagenCartel,fecha}) =>
                 (
-                    <Concierto key={id} imagenCartel={imagenCartel} fecha={fecha}/>
+                    
+                    <Concierto key={id} imagenCartel={imagenCartel} fecha={fecha} />
+                    
+                    
+            
+
                 )
             )}
+        
         </ScrollView>
     </View>
   )
@@ -66,4 +74,5 @@ const styles = StyleSheet.create({
     },
 
  
-})
+});
+export default ConciertosList;

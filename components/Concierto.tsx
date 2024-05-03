@@ -1,18 +1,18 @@
-import { ScrollView, StyleSheet, Text, View, Image} from 'react-native'
+import { ScrollView, StyleSheet, Text, View, Image,TouchableOpacity, Pressable} from 'react-native'
 import React from 'react'
+import Principal from '../screens/Principal';
+import Eventos from '../screens/Eventos';
+import Registro from '../screens/Registro';
 
- 
-export default function Concierto({imagenCartel,fecha}): JSX.Element  {
-    return(
+
+function Concierto({concierto}): JSX.Element  {
+     return(  
         <View style={styles.card}>
             <Image
-                source={imagenCartel }
+                source={concierto.imagenCartel }
                 style={styles.imagenCartel}
-            />
-            <View>
-                <Text style={styles.fecha}>{fecha}</Text>
-               
-            </View>
+            />         
+            <Text style={styles.fecha}>{concierto.fecha}</Text>          
         </View>
     )
 }
@@ -33,12 +33,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 3,
         backgroundColor: 'black',
-        padding: 20,
+        padding: 10,
         borderRadius: 10
     },
     imagenCartel: {
-        width: 90,
-        height: 90,
+        width: 120,
+        height: 120,
         borderRadius: 60 / 2,
         marginRight: 14
     },
@@ -50,5 +50,6 @@ const styles = StyleSheet.create({
     userStatus: {
         fontSize: 12
     }
-})
+});
 
+export default Concierto;

@@ -1,9 +1,17 @@
 import { Button,View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
-export default function TabInfo({navigation}) {
+export default function TabInfo({route,navigation}) {
   return (
     <View style={styles.container}>
+      <Text>{route.params.item.info}</Text>
+      <Text>Artista: {route.params.item.artista}</Text>
+      <Text>Fecha: {route.params.item.fecha}</Text>
+      <Text>Hora: {route.params.item.hora}</Text>
+      <Text>Lugar: {route.params.item.lugar}</Text> 
+      <Text>Precio: {route.params.item.precio}</Text>
+      <Text>Puntos de venta presenciales: {route.params.item.puntos_venta_presenciales}</Text>
+      <Text>Puntos de venta online: {route.params.item.venta_online}</Text>
       
       <Button 
     title="Consige aqui tus entradas"
