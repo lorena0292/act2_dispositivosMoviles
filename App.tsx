@@ -49,7 +49,7 @@ function App(): JSX.Element {
           }}
           >
             {/*STACK PRINCIPAL*/}
-            <Stack.Screen name="VentanaA" component={Principal} 
+            <Stack.Screen name="Principal" component={Principal} 
             options={{
               title: '',
               headerStyle: {

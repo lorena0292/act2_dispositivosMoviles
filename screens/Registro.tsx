@@ -43,7 +43,7 @@ const schema = Yup.object().shape({
 
 })
 
-function Registro(): JSX.Element {
+function Registro({navigation}): JSX.Element {
 
   {/*INICIALIZACION VARIABLES */}
 
@@ -58,8 +58,11 @@ function Registro(): JSX.Element {
 
   const submit = () => {
 
-      Alert.alert(`Muchas gracias. Recibirás tus entradas en la dirección de correo proporcionada`);
-   
+      Alert.alert('',`Muchas gracias. Recibirás tus entradas en la dirección de correo proporcionada`, [  
+             {text: 'OK', onPress: () => navigation.navigate('Principal')},  
+    ]  );
+
+      
     
   };
 
