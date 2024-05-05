@@ -1,21 +1,18 @@
 import { Button, View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 
-
 export default function TabCartel({route, navigation}) {
- 
   return (
     <View style={styles.container}>
       <Image  style={styles.imagen}
               source={route.params.item.imagenCartel} />
-                   
+       <View style={styles.button}>         
       <Button 
         title="Consige aqui tus entradas"
         onPress={() => navigation.navigate('Registro')}
         />
+        </View>   
     </View>
-
-    
   )
 }
 
@@ -40,11 +37,12 @@ const styles = StyleSheet.create({
       borderRadius: 6,
       marginTop:10
   },
-  imagen:{
-     
+  imagen:{ 
       width:400,
-      height:400
-      
+      height:400  
   },
-
+  button: {
+    margin:50,
+    paddingHorizontal: 20,
+  },
 })

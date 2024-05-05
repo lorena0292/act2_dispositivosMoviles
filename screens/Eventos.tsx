@@ -1,21 +1,15 @@
-import {  Button,View, Text, Image} from 'react-native'
 import React from 'react'
 import TabCartel from './TabCartel';
 import TabInfo from './TabInfo';
-
-
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-
 const Tab = createMaterialTopTabNavigator();
-
 
 export default function Eventos({route,navigation}) {
   const item=route.params.item
   return (
 
-      <Tab.Navigator
-        
+      <Tab.Navigator      
         screenOptions={{
           tabBarActiveTintColor: '#FFFFFF',
           tabBarInactiveTintColor: '#F8F8F8',
@@ -39,8 +33,7 @@ export default function Eventos({route,navigation}) {
               options={{
               tabBarLabel: 'CARTEL', 
               
-              }
-            
+              }          
             }
             
               />
@@ -52,8 +45,5 @@ export default function Eventos({route,navigation}) {
               tabBarLabel: '+INFO',
             }} />
       </Tab.Navigator>
-      
-    
-
   )
 }

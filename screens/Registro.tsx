@@ -46,7 +46,6 @@ const schema = Yup.object().shape({
 function Registro({navigation}): JSX.Element {
 
   {/*INICIALIZACION VARIABLES */}
-
   const[conciertoKiko,setConciertoKiko]=useState(false);
   const[conciertoHungara,setConciertoHungara]=useState(false);
   const[conciertoQueen,setConciertoQueen]=useState(false);
@@ -65,8 +64,6 @@ function Registro({navigation}): JSX.Element {
       
     
   };
-
-
 
   return (
     <SafeAreaView>
@@ -235,7 +232,6 @@ function Registro({navigation}): JSX.Element {
                   onPress={handleSubmit}>
                   <Text style={styles.buttonText}>Solicitar entradas </Text>
                 </TouchableOpacity>
-
               </>
 
             )         
