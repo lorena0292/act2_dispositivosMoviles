@@ -1,9 +1,5 @@
 import { ScrollView, StyleSheet, Text, View, Image,TouchableOpacity, Pressable} from 'react-native'
 import React from 'react'
-import Principal from '../screens/Principal';
-import Eventos from '../screens/Eventos';
-import Registro from '../screens/Registro';
-
 
 function Concierto({concierto}): JSX.Element  {
      return(  

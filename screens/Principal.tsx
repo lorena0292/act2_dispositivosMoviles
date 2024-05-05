@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Button,
   SafeAreaView,
@@ -13,49 +12,40 @@ import {
   FlatList,
   Pressable,
 } from 'react-native';
-
+import Concierto from '../components/Concierto';
 import Cabecera from '../components/Cabecera';
-import ConciertosList from '../components/ConciertosList';
 //importamos datos
 import { DATOS_CONCIERTOS } from '../data/dataConciertos';
 
-import Concierto from '../components/Concierto';
 
-function Principal({ navigation}): React.JSX.Element{
-
+function Principal({navigation}): React.JSX.Element{
   return(
     <SafeAreaView>
       <View>
-      <Cabecera/>
+        <Cabecera/>
       </View>
      
      <Text style={styles.tituloTexto}>Conciertos 2024</Text>
-          <FlatList style={styles.container}
+        <FlatList style={styles.container}
             data={DATOS_CONCIERTOS}
             keyExtractor={item=>item.id}
             renderItem={({item})=>(
             <Pressable
-            onPress={() => {
-         
-              navigation.navigate( 'Eventos',{item:item});
+              onPress={() => {      
+                navigation.navigate( 'Eventos',{item:item});
               }}
             >
-            <Concierto concierto={item}/>
-            </Pressable>
-           
-          )}
-          
-          
-          />
-        
+              <Concierto concierto={item}/>
+            </Pressable>         
+          )}        
+        />  
     </SafeAreaView>  
-  
   )
 }
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    marginTop: 32,
+    margin: 32,
     paddingHorizontal: 24,
   }, socialLinks: {
     fontSize: 24,
@@ -65,7 +55,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 6,
     borderRadius: 6,
-    marginTop:10
+    margin:10
     
 },
   sectionTitle: {
@@ -82,9 +72,8 @@ const styles = StyleSheet.create({
   },
   container:{
     paddingHorizontal:16,
-    marginBottom:4,
     margin:30,
-    height:200,
+    height:230,
     backgroundColor:"red",
     padding: 20,
     borderRadius: 10, 
